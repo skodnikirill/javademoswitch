@@ -33,17 +33,25 @@ public class JavaDemoSwitch {
         } while (true);*/
         
         
-        for (int i = 0; i < 10; i++) {
+        MAIN_LOOP:for (int i = 0; i < 3; i++) {
             
-            System.out.println("> ");
+            String responseString = null;
             
-            String responseString = sc.nextLine();
+            do {
+                
+                System.out.println("> ");
+                responseString = sc.nextLine();
+                if (responseString.equals("exit")) {
+                    break MAIN_LOOP;
+                }
+            } while (!responseString.matches(template));
             
-            if (!responseString.matches(template)) {
+            
+            /*if (!responseString.matches(template)) {
                 
                 System.out.println("Enter only numbers from 1 to 5!");
                 continue;
-            }
+            }*/
             
             //int response = sc.nextInt();
             int response = Integer.valueOf(responseString);
@@ -51,7 +59,7 @@ public class JavaDemoSwitch {
             int x = response % 10;
 
             int y = response % 100;
-            System.out.println(x);
+            //System.out.println(x);
             String result;
 
             if (y >= 11 && y <= 14) {
